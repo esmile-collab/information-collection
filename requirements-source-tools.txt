@@ -1,0 +1,6 @@
+yt-dlp[default,curl-cffi]==2026.8.19
+gallery-dl==1.32.9
+youtube-transcript-api==1.2.4
+requests==2.34.2
+aliyun-python-sdk-core==2.16.1
+PyYAML==6.0.3

@@ -1,0 +1,4 @@
+interface:
+  display_name: "信息决策路由"
+  short_description: "为信息收集任务选择项目、来源和工具，并交付可核验结论"
+  default_prompt: "使用 $research-decision-router 为我的决策目标规划并完成信息收集。"

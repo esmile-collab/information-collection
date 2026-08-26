@@ -1,0 +1,12 @@
+.DS_Store
+.tools/
+artifacts/
+cookies*.txt
+*.cookies.txt
+*.env
+.env*
+!*.env.example
+__pycache__/
+*.pyc
+.idea/
+.vscode/

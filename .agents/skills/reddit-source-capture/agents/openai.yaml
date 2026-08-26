@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reddit 信息采集"
+  short_description: "搜索 Reddit 公开帖子和评论并保留可追溯研究证据"
+  default_prompt: "Use $reddit-source-capture to collect relevant Reddit discussions for this research question."

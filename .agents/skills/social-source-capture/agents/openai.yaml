@@ -1,0 +1,4 @@
+interface:
+  display_name: "社交平台采集"
+  short_description: "采集 X 与小红书正文、图片、视频并保留可追溯证据"
+  default_prompt: "Use $social-source-capture to collect this public post and return a traceable local artifact."

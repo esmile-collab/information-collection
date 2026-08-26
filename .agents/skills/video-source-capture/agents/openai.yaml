@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频源采集"
+  short_description: "采集 B 站与 YouTube 视频、字幕、音频并转写"
+  default_prompt: "Use $video-source-capture to collect this public video and return a traceable local artifact."
