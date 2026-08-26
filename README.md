@@ -50,8 +50,8 @@ flowchart LR
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/esmile-collab/information-decision-workbench.git
-cd information-decision-workbench
+git clone https://github.com/esmile-collab/information-collection.git
+cd information-collection
 ```
 
 ### 2. 安装 Skills
