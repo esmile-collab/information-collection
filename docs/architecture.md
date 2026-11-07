@@ -1,29 +1,24 @@
-# 信息决策中台：架构图依据与维护
+# 模块协作架构：依据与维护
 
-核对日期：2026-11-07。代码 / 文档基线：`0f6d08f942a65e24cd9f3cdaa9c9e0e505b0703d`。
+核对日期：2026-11-07。代码 / 文档基线：`2672f0497d265151af81aea86f81e8abab236ca6`。
 
-## 图源
+## 图源与读法
 
-`architecture.svg` 是可编辑图源，README 直接展示。图中没有脚本、动画、外部字体或图片依赖。
-实线表示已有代码关系或仓库规定的 Skill 流程；虚线表示人工处理、人工维护或下一次发起。蓝色突出评测问题和反馈回路。
+`architecture.svg` 是可编辑图源，README 直接展示；英文版本存在时同步维护。图片无动画、脚本、外部字体或图片依赖。
+块表示可定位的代码职责、Skill、文档或数据资源；块内只保留模块名、职责或接口。连线标注传递的数据或调用内容，双向箭头表示调用 / 读取与结果返回。蓝线突出评测与回读，虚线仅表示人工修订。
+图按当前实现分组，不据此宣称所有模块已完全解耦。现有依赖与直接访问路径保留在图和下表中。
 
-## 模块与证据
+## 模块与协作依据
 
-| 图中关系 | 对应文件 | 已核对的范围 |
+| 模块 | 对应文件 | 接口与边界 |
 | --- | --- | --- |
-| 决策与路由、核验、停止条件 | [.agents/skills/research-decision-router/SKILL.md](../.agents/skills/research-decision-router/SKILL.md) | 现有 Skill 流程；由宿主 Agent 执行，包含人工复核。 |
-| 三类采集能力 | [.agents/skills/video-source-capture/SKILL.md](../.agents/skills/video-source-capture/SKILL.md) | 与 social-source-capture、reddit-source-capture 并列；按来源选用。 |
-| 问题和能力边界 | [docs/verification.md](../docs/verification.md) | 历史验证与已知限制；不能视为本次重新实测。 |
-| 稳定方法沉淀 | [AGENTS.md](../AGENTS.md) | 真实任务完成后维护已有 Skill，验证后更新路由；需要 Agent / 人工操作。 |
-
-## 当前边界
-
-- 宿主 Agent 按 Skill 执行；核验与方法沉淀包含人工参与。
-- 访问受阻时保留缺口并停止；后续只补充会改变决策的证据。
-- 路由与质量核验由宿主 Agent 依照 Skill 完成，没有独立的常驻编排服务或自动评测服务器。
-- docs/verification.md 保留历史运行证据；本次架构图核对没有重新访问平台或调用收费 ASR。
+| 宿主 Agent 与路由 Skill | [.agents/skills/research-decision-router/SKILL.md](../.agents/skills/research-decision-router/SKILL.md) | 宿主理解任务、读取路由与核验规则，调用采集 Skill，并依据返回证据形成结论。路由是规则文档，不是独立常驻服务。 |
+| 三个采集 Skill | [README.md](../README.md) | video-source-capture、social-source-capture、reddit-source-capture 按来源分别执行，不互相调用；返回正文、媒体与来源记录。 |
+| 任务资料与方法记录 | [AGENTS.md](../AGENTS.md) | 证据按任务保存，供回看与补采；稳定方法经复核后更新现有 Skill / references。方法更新包含人工操作。 |
+| 已知限制 | [docs/verification.md](../docs/verification.md) | 保留历史验证和访问限制，不代表本次重跑平台采集。 |
 
 ## 随代码维护
 
-输入输出、模块调用、评测门槛、记录位置或反馈路径变化时，在同一提交内更新 SVG、对应 README 与本文件。人工环节保留虚线；只有代码已经实现自动执行后才改为实线。
-直接编辑 SVG 中的文字、节点与路径，保持全部信息默认可见。英文图存在时同步更新。提交前检查 XML 能解析、文字与箭头不重叠、README 图片路径有效，且图中每条回流都有代码或现有流程依据。
+模块职责、调用方、输入输出、共享校验、持久化或回流方式变化时，在同一提交中更新 SVG、README 和本文。不要将人工操作写成自动模块，也不要删除仍然存在的耦合关系。
+图中文字采用短名词和短职责；具体路径与限制留在本文。连线优先写接口内容，例如脚本请求、分镜、快照和运行记录。
+提交前检查 XML 解析、文字边界、连线与节点、README 引用以及静态资源大小。代码行为没有变化时无需为图增加运行依赖。
