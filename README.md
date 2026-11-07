@@ -4,6 +4,13 @@
 
 > Decision-first source capture skills for Bilibili, YouTube, X, Xiaohongshu and Reddit.
 
+## 系统架构
+
+![系统架构：执行、评测、问题沉淀与二次修改](docs/architecture.svg)
+
+[图源、实现边界与维护](docs/architecture.md)
+
+
 ## 它解决什么问题
 
 很多信息任务卡在采集阶段：视频没有字幕、帖子藏在图片里、网页依赖登录态、不同网站需要不同工具，最后得到的总结又回不到原始来源。
@@ -16,18 +23,6 @@
 | `video-source-capture` | B 站、YouTube 视频、字幕、音频和逐字稿 | 元数据、字幕或 ASR、必要的媒体文件 |
 | `social-source-capture` | X、小红书帖子、图片、视频和 OCR | 正文、原始媒体、OCR、来源记录 |
 | `reddit-source-capture` | Reddit 市场调研、用户研究和技术讨论 | 搜索结果、帖子、评论和采集清单 |
-
-```mermaid
-flowchart LR
-    A[决策问题] --> B[research-decision-router]
-    B --> C[video-source-capture]
-    B --> D[social-source-capture]
-    B --> E[reddit-source-capture]
-    C --> F[可追溯证据]
-    D --> F
-    E --> F
-    F --> G[结论、缺口与建议]
-```
 
 ## 能进入哪些场景
 
